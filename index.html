@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Dom-Exercise></Dom-Exercise></title>
+    <style>
+        div{
+            font-size: 30px;
+        }
+        li{
+         color:red;   
+        }
+        button{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>Teachers:
+        <ol id="egitmenler-listesi">
+            <li class="egitmen-liste-eleman ">Ersel</li>
+            <li class="egitmen-liste-eleman ">Ipek</li>
+        </ol>
+        Name:
+        <input type="text" id="yeni-egitmen-adi"/><br><br>
+        <button id="yeni-egitmen-ekle">Add Teacher</button> 
+        <button id="ilk-egitmeni-sil">Delete Teacher</button>
+    </div>
+    <script>
+        // Tum Secimler:
+    let egitmenlerListesi = document.getElementById("egitmenler-listesi")
+    let egitmenListeEleman = document.getElementsByClassName("egitmen-liste-eleman")
+    let yeniEgitmenAdi = document.getElementById("yeni-egitmen-adi")
+    let ilkEgitmeniSil = document.getElementById("ilk-egitmeni-sil")
+    let addTeacher = document.getElementById("yeni-egitmen-ekle") 
+    // Add Butonu:
+    addTeacher.addEventListener("click",function() {
+    // 1. Input alanindaki bilgiyi okusun ve bir degiskene atasin.
+    let yeniEgitmen = yeniEgitmenAdi.value;
+    // 2. Yeni bir <li> elementi olustursun.
+    let yeniListeElemani = document.createElement("li");
+    // 3. Yeni girilen bilgiyi yeni acilan <li> elementine eklesin.
+    let yeniEgitmenNode = document.createTextNode(yeniEgitmen);
+    yeniListeElemani.appendChild(yeniEgitmenNode);
+    // 4. <li> elementini <ol> icine eklesin.
+    egitmenlerListesi.appendChild(yeniListeElemani);
+    })   
+    //delete button:
+    ilkEgitmeniSil.addEventListener("click",function(){
+    // ilk egitmen ismini silsin
+    egitmenlerListesi.firstElementChild.remove();
+    })
+    </script>
+</body>
+</html>
